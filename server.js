@@ -31,6 +31,8 @@ function startServer (customConfig, onStarted) {
   const app = express()
   const config = resolveConfig.with(customConfig)
 
+  // console.log('Start')
+
   init(app, config)
   run(app, config, onStarted)
 }
@@ -91,7 +93,7 @@ function run (app, config, onStarted) {
     if (onStarted) onStarted()
   }
 
-  logger.verbose('Starting mongodb-rest server: ' + host + ':' + port)
+  logger.verbose(`Starting mongodb-rest server: ${host}:${port}`)
   logger.verbose('Connecting to db: ' + JSON.stringify(config.db, null, 4))
 
   if (ssl.enabled) {

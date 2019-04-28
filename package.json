@@ -34,7 +34,7 @@
     "express": "^4.16.4",
     "express-csv": "^0.6.0",
     "extend": "^3.0.2",
-    "mongodb": "^3.2.3",
+    "mongodb": "3.2.3",
     "nocache": "^2.0.0",
     "uuid": "^3.3.2"
   },
@@ -60,7 +60,6 @@
   "devDependencies": {
     "add-matchers": "^0.6.2",
     "jasmine-node": "^1.16.2",
-    "promised-mongo": "^1.2.0",
     "q": "^1.5.1",
     "request": "^2.88.0"
   },
