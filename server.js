@@ -52,7 +52,10 @@ function stopServer () {
  */
 function init (app, config) {
   app.use(nocache())
-  app.use(bodyParser())
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }))
 
   if (config.humanReadableOutput) {
     app.set('json spaces', 4)
