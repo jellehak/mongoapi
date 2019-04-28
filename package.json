@@ -65,6 +65,7 @@
     "request": "^2.88.0"
   },
   "scripts": {
+    "start": "node server.js",
     "test": "jasmine-node ./ --verbose --captureExceptions"
   },
   "bugs": {
