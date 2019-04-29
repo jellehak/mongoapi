@@ -88,13 +88,13 @@ function run (app, config, onStarted) {
   const ssl = config.ssl || { enabled: false, options: {} }
 
   const start = function () {
-    logger.verbose('Now listening on: ' + host + ':' + port + ' SSL:' + ssl.enabled)
+    logger.verbose(`Now listening on: ${host}:${port} SSL: ${ssl.enabled}`)
 
     if (onStarted) onStarted()
   }
 
-  logger.verbose(`Starting mongodb-rest server: ${host}:${port}`)
-  logger.verbose('Connecting to db: ' + JSON.stringify(config.db, null, 4))
+  logger.verbose(`Starting mongodb-rest server: http://${host}:${port}`)
+  logger.verbose('Connecting to db: ', JSON.stringify(config.db, null, 4))
 
   if (ssl.enabled) {
     if (ssl.keyFile) ssl.options.key = fs.readFileSync(ssl.keyFile)
@@ -113,4 +113,4 @@ const autoStart =
     process.argv.length >= 2 &&
     process.argv[1].indexOf('server.js') !== -1
 
-if (autoStart) module.exports.startServer()
+if (autoStart) startServer()

@@ -1,8 +1,8 @@
 {
-  "name": "mongodb-rest",
+  "name": "@yellow3d/mongoapi",
   "description": "REST API Server for MongoDB",
-  "version": "0.10.14",
-  "author": "Ashley Davis <ashley@codecapers.com.au>",
+  "version": "0.0.1",
+  "author": "Jelle Hak <jellehak@gmail.com>",
   "main": "server.js",
   "contributors": [
     {
@@ -52,12 +52,12 @@
     "lib": "./lib"
   },
   "bin": {
-    "mongodb-rest": "./bin/mongodb-rest"
+    "mongoapi": "./bin/mongoapi"
   },
   "engines": {
     "node": ">= 0.10.24"
   },
-  "devDependencies": {
+ "devDependencies": {
     "add-matchers": "^0.6.2",
     "jasmine-node": "^1.16.2",
     "q": "^1.5.1",

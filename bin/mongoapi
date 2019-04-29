@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+/**
+ * Module dependencies.
+ */
+
+var mongodbrest = require('../server')
+
+mongodbrest.startServer()
