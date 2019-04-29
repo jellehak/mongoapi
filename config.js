@@ -18,6 +18,26 @@ module.exports = {
   'humanReadableOutput': true,
   'collectionOutputType': 'json',
   'urlPrefix': '',
+  'queryKeys': {
+    // Same as https://github.com/typicode/json-server
+    'page': '_page',
+    'sort': '_sort',
+    'order': '_order', // 'desc' : 'asc'
+    // Slice
+    'start': '_start',
+    'end': '_end',
+    'limit': '_limit',
+    // Opterators
+    '_gte': '_gte',
+    '_lte': '_lte',
+    '_ne': '_ne',
+    '_like': '_like', // E.g. title_like=server
+    // Full text search
+    'query': 'q',
+    // Relationshipts
+    'embed': '_embed',
+    'expand': '_expand'
+  },
   'schema': {
     'test': {
       'users': {

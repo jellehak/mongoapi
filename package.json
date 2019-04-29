@@ -1,9 +1,10 @@
 {
-  "name": "@yellow3d/mongoapi",
+  "name": "@jellehak/mongoapi",
   "description": "REST API Server for MongoDB",
   "version": "0.0.1",
   "author": "Jelle Hak <jellehak@gmail.com>",
   "main": "server.js",
+  "private": false,
   "contributors": [
     {
       "name": "Ashley Davis",
@@ -47,7 +48,7 @@
     "restful",
     "api"
   ],
-  "repository": "https://github.com/codecapers/mongodb-rest.git",
+  "repository": "https://github.com/jellehak/mongodb-rest.git",
   "directories": {
     "lib": "./lib"
   },
@@ -57,7 +58,7 @@
   "engines": {
     "node": ">= 0.10.24"
   },
- "devDependencies": {
+  "devDependencies": {
     "add-matchers": "^0.6.2",
     "jasmine-node": "^1.16.2",
     "q": "^1.5.1",
@@ -68,7 +69,7 @@
     "test": "jasmine-node ./ --verbose --captureExceptions"
   },
   "bugs": {
-    "url": "https://github.com/codecapers/mongodb-rest/issues"
+    "url": "https://github.com/jellehak/mongodb-rest/issues"
   },
-  "homepage": "https://github.com/codecapers/mongodb-rest"
+  "homepage": "https://github.com/jellehak/mongodb-rest"
 }
