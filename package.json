@@ -26,7 +26,7 @@
     "restful",
     "api"
   ],
-  "repository": "https://github.com/jellehak/mongodb-rest.git",
+  "repository": "https://github.com/jellehak/mongoapi.git",
   "directories": {
     "lib": "./lib"
   },
