@@ -1,10 +1,48 @@
 {
   "name": "@jellehak/mongoapi",
   "description": "REST API Server for MongoDB",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Jelle Hak <jellehak@gmail.com>",
   "main": "server.js",
   "private": false,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "npx nodemon server.js",
+    "test": "jasmine-node ./ --verbose --captureExceptions"
+  },
+  "dependencies": {
+    "ajv": "^6.11.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "3.5.3",
+    "uuid": "^3.4.0"
+  },
+  "keywords": [
+    "mongodb",
+    "mongo",
+    "db",
+    "web",
+    "rest",
+    "restful",
+    "api"
+  ],
+  "repository": "https://github.com/jellehak/mongodb-rest.git",
+  "directories": {
+    "lib": "./lib"
+  },
+  "bin": {
+    "mongoapi": "./bin/mongoapi"
+  },
+  "engines": {
+    "node": ">= 0.10.24"
+  },
+  "devDependencies": {
+    "add-matchers": "^0.6.2",
+    "jasmine-node": "^3.0.0",
+    "q": "^1.5.1",
+    "request": "^2.88.2"
+  },
+  "homepage": "https://github.com/jellehak/mongoapi",
   "contributors": [
     {
       "name": "Ashley Davis",
@@ -28,48 +66,5 @@
     {
       "name": "Samyak Bhuta"
     }
-  ],
-  "dependencies": {
-    "ajv": "^6.10.0",
-    "body-parser": "^1.19.0",
-    "express": "^4.16.4",
-    "express-csv": "^0.6.0",
-    "extend": "^3.0.2",
-    "mongodb": "3.2.3",
-    "nocache": "^2.0.0",
-    "uuid": "^3.3.2"
-  },
-  "keywords": [
-    "mongodb",
-    "mongo",
-    "db",
-    "web",
-    "rest",
-    "restful",
-    "api"
-  ],
-  "repository": "https://github.com/jellehak/mongodb-rest.git",
-  "directories": {
-    "lib": "./lib"
-  },
-  "bin": {
-    "mongoapi": "./bin/mongoapi"
-  },
-  "engines": {
-    "node": ">= 0.10.24"
-  },
-  "devDependencies": {
-    "add-matchers": "^0.6.2",
-    "jasmine-node": "^1.16.2",
-    "q": "^1.5.1",
-    "request": "^2.88.0"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "test": "jasmine-node ./ --verbose --captureExceptions"
-  },
-  "bugs": {
-    "url": "https://github.com/jellehak/mongodb-rest/issues"
-  },
-  "homepage": "https://github.com/jellehak/mongodb-rest"
+  ]
 }

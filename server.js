@@ -8,14 +8,10 @@
  * This file is part of mongodb-rest.
  */
 
-const fs = require('fs')
 const express = require('express')
-const nocache = require('nocache')
 const bodyParser = require('body-parser')
-const https = require('https')
 const initRoutes = require('./lib/routes')
 const resolveConfig = require('./lib/config/resolve-config')
-require('express-csv')
 
 var server = null
 
@@ -53,7 +49,6 @@ function stopServer () {
  * @param {object} config
  */
 function init (app, config) {
-  app.use(nocache())
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({
     extended: true
@@ -96,14 +91,7 @@ function run (app, config, onStarted) {
   logger.verbose(`Starting mongodb-rest server: http://${host}:${port}`)
   logger.verbose('Connecting to db: ', JSON.stringify(config.db, null, 4))
 
-  if (ssl.enabled) {
-    if (ssl.keyFile) ssl.options.key = fs.readFileSync(ssl.keyFile)
-    if (ssl.certificate) ssl.options.cert = fs.readFileSync(ssl.certificate)
-
-    server = https.createServer(ssl.options, app).listen(port, host, start)
-  } else {
-    server = app.listen(port, host, start)
-  }
+  server = app.listen(port, host, start)
 }
 
 /**
