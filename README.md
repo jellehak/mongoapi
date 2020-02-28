@@ -15,6 +15,10 @@ A simple but incredibly useful REST API server for MongoDB using Node, Express a
 - [ ] User roles
 - [ ] Be able to switch to AQP query style `https://www.npmjs.com/package/api-query-params`
 
+# Similar projects
+https://nomadas.gitbook.io/mongo-server
+https://github.com/ltonetwork/mongodb-rest
+
 Installation
 ------------
 

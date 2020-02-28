@@ -7,7 +7,7 @@ module.exports = {
   accessControl: {
     allowOrigin: '*',
     allowMethods: 'GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS',
-    allowCredentials: false
+    allowCredentials: true
   },
   mongoOptions: {
     serverOptions: {},

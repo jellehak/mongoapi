@@ -52,10 +52,10 @@ function init (app, config) {
     app.set('json spaces', 4)
   }
 
-  if (config.accessControl) {
-    const accesscontrol = require('./lib/auth/accesscontrol')(config)
-    app.use(accesscontrol.handle)
-  }
+  // if (config.accessControl) {
+  //   const accesscontrol = require('./lib/auth/accesscontrol')(config)
+  //   app.use(accesscontrol)
+  // }
 
   app.get('/favicon.ico', function (req, res) {
     res.status(404)

@@ -1,10 +1,9 @@
 {
-  "name": "@yellow/mongoapi",
+  "name": "@jellehak/mongoapi",
   "description": "REST API Server for MongoDB",
   "version": "0.0.3",
   "author": "Jelle Hak <jellehak@gmail.com>",
   "main": "server.js",
-  "private": false,
   "scripts": {
     "start": "node server.js",
     "dev": "npx nodemon server.js",
@@ -13,6 +12,7 @@
   "dependencies": {
     "ajv": "^6.11.0",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongodb": "3.5.3",
     "uuid": "^3.4.0"
