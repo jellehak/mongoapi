@@ -1,17 +1,7 @@
-/**
- * server.js
- * mongodb-rest
- *
- * Maintained by Ashley Davis 2014-07-02
- * Created by Tom de Grunt on 2010-10-03.
- * Copyright (c) 2010 Tom de Grunt.
- * This file is part of mongodb-rest.
- */
-
 const express = require('express')
 const bodyParser = require('body-parser')
 const initRoutes = require('./lib/routes')
-const resolveConfig = require('./lib/config/resolve-config')
+const defaultConfig = require('./config')
 
 var server = null
 
@@ -23,14 +13,18 @@ module.exports = {
 /**
  * Start the REST API server.
  */
-function startServer (customConfig, onStarted) {
+async function startServer (customConfig) {
   const app = express()
-  const config = resolveConfig.with(customConfig)
 
-  // console.log('Start')
+  const config = {
+    ...defaultConfig,
+    ...customConfig
+  }
+
+  console.log(config)
 
   init(app, config)
-  run(app, config, onStarted)
+  return run(app, config)
 }
 
 /**
@@ -76,22 +70,25 @@ function init (app, config) {
  * @param {object} config
  * @param {callback} onStarted
  */
-function run (app, config, onStarted) {
+async function run (app, config) {
   const logger = config.logger
   const host = config.server.address
   const port = config.server.port
-  const ssl = config.ssl || { enabled: false, options: {} }
+  // const ssl = config.ssl || { enabled: false, options: {} }
 
-  const start = function () {
-    logger.verbose(`Now listening on: ${host}:${port} SSL: ${ssl.enabled}`)
+  // const start = function () {
+  //   logger.verbose(`Now listening on: ${host}:${port} SSL: ${ssl.enabled}`)
 
-    if (onStarted) onStarted()
-  }
+  //   if (onStarted) onStarted()
+  // }
 
   logger.verbose(`Starting mongodb-rest server: http://${host}:${port}`)
   logger.verbose('Connecting to db: ', JSON.stringify(config.db, null, 4))
 
-  server = app.listen(port, host, start)
+  return new Promise(resolve => {
+    logger.verbose(`Now listening on: ${host}:${port}`)
+    server = app.listen(port, host, resolve)
+  })
 }
 
 /**

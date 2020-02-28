@@ -1,69 +1,32 @@
-mongodb-rest
+mongoapi
 ============
+Get a full REST API with **zero coding** in **less than 30 seconds** \(seriously\) Hyper-Heavily inspired on [json-server](https://github.com/typicode/json-server)
 
-A simple but incredibly useful REST API server for MongoDB using Node, using Express and the native node.js MongoDB driver.
+This is a rewrite of the great `mongodb-rest` (https://github.com/ltonetwork/mongodb-rest) package to be compatible to `json-server` query definitions (_start, _limit, ...). 
 
-As Tom has said this REST server has no security and is not fit for use in production. So be warned! Work is currently being done to improve the security of mongodb-rest, but this is still a work-in-progress.
+Changes include:
+- Similar API as https://github.com/typicode/json-server
+- Cleaner code
 
-I have found this REST server to be invaluable for rapid prototyping web applications. When you don't care about security and you just need to try something out without investing the time to build a proper secure REST API.
+A simple but incredibly useful REST API server for MongoDB using Node, Express and the native node.js MongoDB driver.
 
-Recent Updates
---------------
-
-Simple connection pooling has been added by @elabrc.
-
-A simple token-based authentication has been added to mongodb-rest (thanks to @ZECTBynmo). This is a prototype feature only and may change in the future. I am considering making authentication plugin-based so you can roll your own if necessary. If you have any thoughts on how this should work please let us know.
-
-Contents
---------
-
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [Installation
-](#installation)
-- [Test
-](#test)
-- [Start Server Programmatically
-](#start-server-programmatically)
-- [Configuration
-](#configuration)
-- [Logging
-](#logging)
-- [Supported REST API
-](#supported-rest-api)
-- [Query options
-](#query-options)
-- [Dependencies
-](#dependencies)
-- [Auth
-](#auth)
-- [Getting the Code
-](#getting-the-code)
-- [Testing
-](#testing)
-- [Travis-CI
-](#travis-ci)
-- [Future
-](#future)
-- [Credits
-](#credits)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+# Roadmap
+- [ ] Endpoint based policies
+- [ ] User roles
+- [ ] Be able to switch to AQP query style `https://www.npmjs.com/package/api-query-params`
 
 Installation
 ------------
 
 Installation is via npm:
-> npm install mongodb-rest
+> npm install mongoapi
 
 You can install globally using -g:
-> npm install -g mongodb-rest
+> npm install -g mongoapi
 
-Now issue `mongodb-rest` on the command line and the server should start.
+Now issue `mongoapi` on the command line and the server should start.
 
-NOTE: Make sure you are running a MongoDB database in addition to the mongodb-rest server.
+NOTE: Make sure you are running a MongoDB database in addition to the mongoapi server.
 
 Test
 ----
@@ -81,21 +44,22 @@ This should add a document to the "test" db.example1 collection:
 Start Server Programmatically
 -----------------------------
 
-mongodb-rest can easily be started programmatically by 'requiring' the module and calling `startServer`.
-
-	var mongodbRest = require('mongodb-rest/server.js');
+mongoapi can easily be started programmatically by 'requiring' the module and calling `startServer`.
+```js
+	const mongodbRest = require('mongoapi/server.js');
 	mongodbRest.startServer();
-
+```
 You can optionally pass in a configuration object:
-
+```js
 	mongodbRest.startServer(config);
+```
 
 Configuration
 -------------
 
 When starting from the command line you should have `config.json` in the current working directory. The project includes an example configuration file.
 
-When starting the server programmatically you can pass in a Javascript object for mongodb-rest configuration.
+When starting the server programmatically you can pass in a Javascript object for mongoapi configuration.
 
 Here is an example JSON configuration object:
 
@@ -174,11 +138,11 @@ For backward compatibility `db` can also be set to an object that specified `hos
 
 Valid options under `serverOptions` are documented here: http://mongodb.github.io/node-mongodb-native/api-generated/server.html.
 
-`auto_reconnect` is automatically enabled, don't override this or mongodb-rest may not work as expected.
+`auto_reconnect` is automatically enabled, don't override this or mongoapi may not work as expected.
 
 Valid options under `dbOptions` are documented here: http://mongodb.github.io/node-mongodb-native/api-generated/db.html.
 
-`w` (write concern) is set to 1 so that acknowledgement of the write is recieved by mongodb-rest, currently this must be enabled for error checking.
+`w` (write concern) is set to 1 so that acknowledgement of the write is recieved by mongoapi, currently this must be enabled for error checking.
 
 Set `collectionOutputType` to `csv` to returns collections as csv data rather than json.
 
@@ -234,7 +198,7 @@ The URL prefix should allow the REST API to co-exist with another REST API and c
 Logging
 -------
 
-Winston logging is supported if you configure the REST API programmatically. When you call `startServer` and pass in configuration options set the `logger` option to your Winston logger. Mongodb-rest uses the following functions: verbose, info, warn and error.
+Winston logging is supported if you configure the REST API programmatically. When you call `startServer` and pass in configuration options set the `logger` option to your Winston logger. Mongoapi uses the following functions: verbose, info, warn and error.
 
 Please see the Winston documentation for more setup details: https://github.com/flatiron/winston
 
@@ -487,17 +451,12 @@ An example of query with options:
     GET /<db>/<collection>?query={"key":"value"}&fields={"name":1,"surname":1}&limit=10&skip=2&snapshot=1&sort={"name":-1}&hint=index_name
 ```
 
-Dependencies
-------------
-
-Are indicated in package.json.
-
 Auth
 ----
 
 **WARNING: This is a prototype feature and may change in the future**.
 
-mongodb-rest supports a simple token-based auth system. Login is accomplilshed by a HTTP POST to `/login` with `username` and `password`, the server will verify the user's password against a secret database. Upon authentication an access token is returned that must be attached to each subsequent API requests.
+mongoapi supports a simple token-based auth system. Login is accomplilshed by a HTTP POST to `/login` with `username` and `password`, the server will verify the user's password against a secret database. Upon authentication an access token is returned that must be attached to each subsequent API requests.
 
 An authorization token is specified via query parameter as follows:
 
@@ -534,41 +493,9 @@ An example configuration `example config with auth.json` is included with a work
 
 ** Please note that mongodb exposes all databases in the server, including your secret authentication database. Move your auth database to a different server on the same machine or ensure MongoDB authentication is setup correctly. Work will be done in the future that allows particular databases to be whitelisted/blacklisted and not exposed. **
 
-
-Getting the Code
-----------------
-
-You can get the code by forking/cloning the repo at:
-
- https://github.com/codecapers/mongodb-rest.git
-
-Testing
--------
-
-Integration tests use jasmine-node.
-
-Run 'jasmine-node' from the main folder:
-
->jasmine-node .\ --verbose
-
-Travis-CI
----------
-
-https://travis-ci.org/ashleydavis/mongodb-rest
-
-Future
-------
-
-Roadmap:<br/>
-https://trello.com/b/OzRxPSjO/mongodb-rest-roadmap
-
 Credits
 -------
 
 * [MongoDB Driver](http://github.com/christkv/node-mongodb-native)
 * [Express](http://expressjs.com/)
 * [npm](http://npmjs.org/)
-
-Testing:
-* [Jasmine-Node](https://github.com/mhevery/jasmine-node)
-* [Q (for async testing)](https://github.com/kriskowal/q)

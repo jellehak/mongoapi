@@ -6,13 +6,28 @@ module.exports = {
   },
   accessControl: {
     allowOrigin: '*',
-    allowMethods: 'GET,POST,PUT,DELETE,HEAD,OPTIONS',
+    allowMethods: 'GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS',
     allowCredentials: false
   },
   mongoOptions: {
     serverOptions: {},
     dbOptions: {
       w: 1
+    }
+  },
+  logger: {
+    verbose (msg) {
+      console.log(msg)
+    },
+    info (msg) {
+      console.log(msg)
+    },
+    warning (msg) {
+      console.warn(msg)
+    },
+    error (msg) {
+      // console.log(msg)
+      throw Error(msg)
     }
   },
   humanReadableOutput: true,

@@ -1,7 +1,7 @@
 {
-  "name": "@jellehak/mongoapi",
+  "name": "@yellow/mongoapi",
   "description": "REST API Server for MongoDB",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Jelle Hak <jellehak@gmail.com>",
   "main": "server.js",
   "private": false,
@@ -36,35 +36,5 @@
   "engines": {
     "node": ">= 0.10.24"
   },
-  "devDependencies": {
-    "add-matchers": "^0.6.2",
-    "jasmine-node": "^3.0.0",
-    "q": "^1.5.1",
-    "request": "^2.88.2"
-  },
-  "homepage": "https://github.com/jellehak/mongoapi",
-  "contributors": [
-    {
-      "name": "Ashley Davis",
-      "email": "ashley@codecapers.com.au"
-    },
-    {
-      "name": "Mike Vegeto",
-      "email": "michael.vegeto@gmail.com"
-    },
-    {
-      "name": "Ryan Carmichael",
-      "email": "ryan.carmichael@elabsolutions.com"
-    },
-    {
-      "name": "Tom de Grunt",
-      "email": "tom@degrunt.nl"
-    },
-    {
-      "name": "Benjamín Eidelman"
-    },
-    {
-      "name": "Samyak Bhuta"
-    }
-  ]
+  "homepage": "https://github.com/jellehak/mongoapi"
 }
